@@ -57,7 +57,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.NICcomboBox1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -71,10 +70,10 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.LightGreen;
-            this.button1.Location = new System.Drawing.Point(365, 288);
+            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.Location = new System.Drawing.Point(260, 294);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 52);
+            this.button1.Size = new System.Drawing.Size(119, 40);
             this.button1.TabIndex = 1;
             this.button1.Text = "Changer IP";
             this.button1.UseVisualStyleBackColor = false;
@@ -82,6 +81,8 @@
             // 
             // ProfilecomboBox
             // 
+            this.ProfilecomboBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.ProfilecomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProfilecomboBox.FormattingEnabled = true;
             this.ProfilecomboBox.Location = new System.Drawing.Point(60, 6);
             this.ProfilecomboBox.Name = "ProfilecomboBox";
@@ -94,9 +95,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Profil :";
+            this.label1.Text = "Profil(s) :";
             // 
             // statusStrip1
             // 
@@ -120,6 +121,7 @@
             this.StatusIPLabel.Name = "StatusIPLabel";
             this.StatusIPLabel.Size = new System.Drawing.Size(71, 17);
             this.StatusIPLabel.Text = "IP Address : ";
+            this.StatusIPLabel.Click += new System.EventHandler(this.StatusIPLabel_Click);
             // 
             // StatusIPLabel2
             // 
@@ -142,14 +144,15 @@
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(55, 17);
-            this.toolStripStatusLabel2.Text = "Réseaux :";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(58, 17);
+            this.toolStripStatusLabel2.Text = "Network :";
             // 
             // StatusNetworkLabel
             // 
             this.StatusNetworkLabel.Name = "StatusNetworkLabel";
             this.StatusNetworkLabel.Size = new System.Drawing.Size(87, 17);
             this.StatusNetworkLabel.Text = "192.168.31.0/24";
+            this.StatusNetworkLabel.Click += new System.EventHandler(this.StatusNetworkLabel_Click);
             // 
             // toolStripStatusLabel3
             // 
@@ -166,9 +169,9 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(163, 294);
+            this.button2.Location = new System.Drawing.Point(136, 294);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 40);
+            this.button2.Size = new System.Drawing.Size(119, 40);
             this.button2.TabIndex = 1;
             this.button2.Text = "Appliquer";
             this.button2.UseVisualStyleBackColor = true;
@@ -184,10 +187,11 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 207);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(538, 81);
+            this.groupBox1.Size = new System.Drawing.Size(492, 81);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nouveau Profile";
+            this.groupBox1.Text = "Nouveau Profil";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // GateWaytextBox1
             // 
@@ -211,6 +215,7 @@
             this.ProfiletextBox.Name = "ProfiletextBox";
             this.ProfiletextBox.Size = new System.Drawing.Size(100, 20);
             this.ProfiletextBox.TabIndex = 2;
+            this.ProfiletextBox.TextChanged += new System.EventHandler(this.ProfiletextBox_TextChanged);
             // 
             // label7
             // 
@@ -229,6 +234,7 @@
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Adresse :";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -248,7 +254,6 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(12, 91);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(492, 100);
@@ -261,36 +266,34 @@
             this.GateWaylabel9.AutoSize = true;
             this.GateWaylabel9.Location = new System.Drawing.Point(226, 71);
             this.GateWaylabel9.Name = "GateWaylabel9";
-            this.GateWaylabel9.Size = new System.Drawing.Size(35, 13);
+            this.GateWaylabel9.Size = new System.Drawing.Size(0, 13);
             this.GateWaylabel9.TabIndex = 0;
-            this.GateWaylabel9.Text = "label5";
             // 
             // Masklabel7
             // 
             this.Masklabel7.AutoSize = true;
             this.Masklabel7.Location = new System.Drawing.Point(226, 45);
             this.Masklabel7.Name = "Masklabel7";
-            this.Masklabel7.Size = new System.Drawing.Size(35, 13);
+            this.Masklabel7.Size = new System.Drawing.Size(0, 13);
             this.Masklabel7.TabIndex = 0;
-            this.Masklabel7.Text = "label5";
+            this.Masklabel7.Click += new System.EventHandler(this.Masklabel7_Click);
             // 
             // Reseauxlabel9
             // 
             this.Reseauxlabel9.AutoSize = true;
             this.Reseauxlabel9.Location = new System.Drawing.Point(63, 71);
             this.Reseauxlabel9.Name = "Reseauxlabel9";
-            this.Reseauxlabel9.Size = new System.Drawing.Size(35, 13);
+            this.Reseauxlabel9.Size = new System.Drawing.Size(0, 13);
             this.Reseauxlabel9.TabIndex = 0;
-            this.Reseauxlabel9.Text = "label5";
             // 
             // Addresslabel5
             // 
             this.Addresslabel5.AutoSize = true;
             this.Addresslabel5.Location = new System.Drawing.Point(63, 45);
             this.Addresslabel5.Name = "Addresslabel5";
-            this.Addresslabel5.Size = new System.Drawing.Size(35, 13);
+            this.Addresslabel5.Size = new System.Drawing.Size(0, 13);
             this.Addresslabel5.TabIndex = 0;
-            this.Addresslabel5.Text = "label5";
+            this.Addresslabel5.Click += new System.EventHandler(this.Addresslabel5_Click);
             // 
             // label8
             // 
@@ -319,21 +322,12 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Passerelle :";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(160, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Masque :";
-            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button3.Location = new System.Drawing.Point(12, 294);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 40);
+            this.button3.Size = new System.Drawing.Size(118, 40);
             this.button3.TabIndex = 1;
             this.button3.Text = "Sauvegarder et appliquer";
             this.button3.UseVisualStyleBackColor = true;
@@ -341,25 +335,28 @@
             // 
             // NICcomboBox1
             // 
+            this.NICcomboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NICcomboBox1.FormattingEnabled = true;
+            this.NICcomboBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.NICcomboBox1.Location = new System.Drawing.Point(12, 64);
             this.NICcomboBox1.Name = "NICcomboBox1";
-            this.NICcomboBox1.Size = new System.Drawing.Size(427, 21);
+            this.NICcomboBox1.Size = new System.Drawing.Size(492, 21);
             this.NICcomboBox1.TabIndex = 2;
+            this.NICcomboBox1.SelectedIndexChanged += new System.EventHandler(this.NICcomboBox1_SelectedIndexChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(12, 47);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.Size = new System.Drawing.Size(66, 13);
             this.label9.TabIndex = 3;
-            this.label9.Text = "Interface :";
+            this.label9.Text = "Interface(s) :";
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.LightCoral;
-            this.button4.Location = new System.Drawing.Point(187, 6);
+            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.Location = new System.Drawing.Point(187, 5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 6;
@@ -370,9 +367,9 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(491, 9);
+            this.button5.Location = new System.Drawing.Point(386, 294);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(118, 40);
             this.button5.TabIndex = 7;
             this.button5.Text = "Mode Auto";
             this.button5.UseVisualStyleBackColor = true;
@@ -400,6 +397,7 @@
             this.Name = "Form1";
             this.Text = "NetworkSwitching";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -429,7 +427,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox AddresstextBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label Masklabel7;
         private System.Windows.Forms.Label Addresslabel5;

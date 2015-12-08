@@ -281,7 +281,51 @@ namespace NetworkSwitch
                     }
                 }
             }
+         }
+
+        private void ProfiletextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Addresslabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Masklabel7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatusNetworkLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatusIPLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NICcomboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
