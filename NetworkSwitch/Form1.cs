@@ -56,17 +56,19 @@ namespace NetworkSwitch
         {
             string ip = GetLocalIPAddress();
             IPNetwork local = IPNetwork.Parse(ip);
-            if (this.currentProfile.Address != null)
+            if (this.currentProfile != null)
             {
                 StatusIPLabel2.Text = this.currentProfile.Address.ToString();
                 StatusMaskLabel.Text = this.currentProfile.Network.Netmask.ToString();
                 StatusNetworkLabel.Text = this.currentProfile.Network.ToString();
+                StatusGatewayLabel.Text = this.currentProfile.GateWay.ToString();
             }
             else
             {
                 StatusIPLabel2.Text = ip;
                 StatusMaskLabel.Text = local.Netmask.ToString();
                 StatusNetworkLabel.Text = local.ToString();
+                //StatusGatewayLabel.Text = 
             }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -76,6 +78,7 @@ namespace NetworkSwitch
 
         private void MasktextBox1_TextChanged(object sender, EventArgs e)
         {
+            this.tmpProfile = new Profile();
             string ip = AddresstextBox1.Text.Trim();
             Regex r = new Regex(@"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/(\d{1,2})");
             Regex r2 = new Regex(@"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})");
@@ -107,7 +110,12 @@ namespace NetworkSwitch
                     this.tmpProfile.Network = IPNetwork.Parse(ip);
             }
             catch (Exception) { }
+            if (this.tmpProfile.Network != null && this.tmpProfile.Address != null && this.tmpProfile.GateWay != null && this.tmpProfile.Name.Trim().Length != 0)
+            {
+                button2.Enabled = true;
+            }
             this.refreshlabel(true);
+
         }
         void refreshlabel(bool fromTmp)
         {
@@ -173,9 +181,12 @@ namespace NetworkSwitch
 
         void apply()
         {
-            this.setIP(this.currentProfile.Address.ToString(), this.currentProfile.Network.Netmask.ToString());
-            this.setGateway(this.currentProfile.GateWay.ToString());
-            this.refreshStatus();
+            if (this.currentProfile != null)
+            {
+                this.setIP(this.currentProfile.Address.ToString(), this.currentProfile.Network.Netmask.ToString());
+                this.setGateway(this.currentProfile.GateWay.ToString());
+                this.refreshStatus();
+            }
         }
 
         void setIP(string ip_address, string subnet_mask)
@@ -255,6 +266,7 @@ namespace NetworkSwitch
             {
                 profiles.Items.Remove(currentProfile);
                 ProfilecomboBox.Items.Remove(currentProfile);
+                currentProfile = null;
             }
             catch (Exception) { }
         }
@@ -263,7 +275,6 @@ namespace NetworkSwitch
         {
             ManagementClass objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
             ManagementObjectCollection objMOC = objMC.GetInstances();
-
             foreach (ManagementObject objMO in objMOC)
             {
                 if ((bool)objMO["IPEnabled"])
@@ -281,6 +292,8 @@ namespace NetworkSwitch
                     }
                 }
             }
+            this.currentProfile = null;
+            this.refreshStatus();
          }
 
         private void ProfiletextBox_TextChanged(object sender, EventArgs e)
@@ -324,6 +337,21 @@ namespace NetworkSwitch
         }
 
         private void NICcomboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatusGatewayLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
