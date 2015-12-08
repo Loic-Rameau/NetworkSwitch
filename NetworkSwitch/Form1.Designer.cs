@@ -121,7 +121,6 @@
             this.StatusIPLabel.Name = "StatusIPLabel";
             this.StatusIPLabel.Size = new System.Drawing.Size(71, 17);
             this.StatusIPLabel.Text = "IP Address : ";
-            this.StatusIPLabel.Click += new System.EventHandler(this.StatusIPLabel_Click);
             // 
             // StatusIPLabel2
             // 
@@ -152,7 +151,6 @@
             this.StatusNetworkLabel.Name = "StatusNetworkLabel";
             this.StatusNetworkLabel.Size = new System.Drawing.Size(87, 17);
             this.StatusNetworkLabel.Text = "192.168.31.0/24";
-            this.StatusNetworkLabel.Click += new System.EventHandler(this.StatusNetworkLabel_Click);
             // 
             // toolStripStatusLabel3
             // 
@@ -165,7 +163,6 @@
             this.StatusGatewayLabel.Name = "StatusGatewayLabel";
             this.StatusGatewayLabel.Size = new System.Drawing.Size(82, 17);
             this.StatusGatewayLabel.Text = "192.168.31.254";
-            this.StatusGatewayLabel.Click += new System.EventHandler(this.StatusGatewayLabel_Click);
             // 
             // button2
             // 
@@ -193,7 +190,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nouveau Profil";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // GateWaytextBox1
             // 
@@ -217,7 +213,6 @@
             this.ProfiletextBox.Name = "ProfiletextBox";
             this.ProfiletextBox.Size = new System.Drawing.Size(100, 20);
             this.ProfiletextBox.TabIndex = 4;
-            this.ProfiletextBox.TextChanged += new System.EventHandler(this.ProfiletextBox_TextChanged);
             // 
             // label7
             // 
@@ -236,7 +231,6 @@
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Adresse et masque :";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -246,7 +240,6 @@
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Nom profil :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox2
             // 
@@ -263,7 +256,6 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prévisualisation";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // GateWaylabel9
             // 
@@ -280,7 +272,6 @@
             this.Masklabel7.Name = "Masklabel7";
             this.Masklabel7.Size = new System.Drawing.Size(0, 13);
             this.Masklabel7.TabIndex = 0;
-            this.Masklabel7.Click += new System.EventHandler(this.Masklabel7_Click);
             // 
             // Reseauxlabel9
             // 
@@ -297,7 +288,6 @@
             this.Addresslabel5.Name = "Addresslabel5";
             this.Addresslabel5.Size = new System.Drawing.Size(0, 13);
             this.Addresslabel5.TabIndex = 0;
-            this.Addresslabel5.Click += new System.EventHandler(this.Addresslabel5_Click);
             // 
             // label8
             // 
@@ -346,7 +336,6 @@
             this.NICcomboBox1.Name = "NICcomboBox1";
             this.NICcomboBox1.Size = new System.Drawing.Size(492, 21);
             this.NICcomboBox1.TabIndex = 3;
-            this.NICcomboBox1.SelectedIndexChanged += new System.EventHandler(this.NICcomboBox1_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -402,7 +391,6 @@
             this.Name = "Form1";
             this.Text = "Network Switching";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

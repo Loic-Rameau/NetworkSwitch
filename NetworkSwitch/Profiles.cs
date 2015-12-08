@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace NetworkSwitch
@@ -12,8 +13,7 @@ namespace NetworkSwitch
     [Serializable]
     public class Profiles
     {
-        public static string filename = Path.Combine(Environment.GetFolderPath(
-                Environment.SpecialFolder.ApplicationData), "NetworkSwitching.xml");
+        public static string filename = Path.Combine( Path.GetDirectoryName(Application.ExecutablePath), "NetworkSwitching.xml");
         public List<Profile> Items { get; set; }
 
         public static Profiles Unserialize()

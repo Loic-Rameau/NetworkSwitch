@@ -80,17 +80,20 @@ namespace NetworkSwitch
         {
             this.tmpProfile = new Profile();
             string ip = AddresstextBox1.Text.Trim();
-            Regex r = new Regex(@"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/(\d{1,2})");
-            Regex r2 = new Regex(@"(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})");
+            Regex r = new Regex(@"^(?<Ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\/(?<Mask>\d{1,2})$", RegexOptions.Compiled);
+            Regex r2 = new Regex(@"^(?<Ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})$", RegexOptions.Compiled);
             try
             {
                 if(r.IsMatch(ip))
                 {
-                    this.tmpProfile.Address = IPAddress.Parse(r.Matches(ip)[1].Value);
+                    GroupCollection groups = r.Match(ip).Groups;
+                    if (groups.Count > 1)
+                        this.tmpProfile.Address = IPAddress.Parse(groups[r.GroupNumberFromName("Ip")].Value);
                 }
                 else if (r2.IsMatch(ip))
                 {
-                    this.tmpProfile.Address = IPAddress.Parse(ip);
+                    GroupCollection groups = r.Match(ip).Groups;
+                    this.tmpProfile.Address = IPAddress.Parse(groups[r.GroupNumberFromName("Ip")].Value);
                 }
             }
             catch (Exception) { }
@@ -108,11 +111,17 @@ namespace NetworkSwitch
             {
                 if(r.IsMatch(ip))
                     this.tmpProfile.Network = IPNetwork.Parse(ip);
+                else  if (r2.IsMatch(ip))
+                    this.tmpProfile.Network = IPNetwork.Parse(ip + "/25");
             }
             catch (Exception) { }
             if (this.tmpProfile.Network != null && this.tmpProfile.Address != null && this.tmpProfile.GateWay != null && this.tmpProfile.Name.Trim().Length != 0)
             {
                 button2.Enabled = true;
+            }
+            else
+            {
+                button2.Enabled = false;
             }
             this.refreshlabel(true);
 
@@ -166,8 +175,19 @@ namespace NetworkSwitch
 
         private void button3_Click(object sender, EventArgs e)
         {
-            profiles.Items.Add(tmpProfile);
-            ProfilecomboBox.Items.Add(tmpProfile);
+
+            if (profiles.Items.Where((Profile pro) => { return pro.Name == tmpProfile.Name; }).Count() > 0)
+            {
+                Profile profile = profiles.Items.Where((Profile pro) => { return pro.Name == tmpProfile.Name; }).First();
+                profile.Address = tmpProfile.Address;
+                profile.GateWay = tmpProfile.GateWay;
+                profile.Network = tmpProfile.Network;
+            }
+            else
+            {
+                profiles.Items.Add(tmpProfile);
+                ProfilecomboBox.Items.Add(tmpProfile);
+            }
             currentProfile = tmpProfile;
             tmpProfile = new Profile();
             this.apply();
@@ -295,65 +315,5 @@ namespace NetworkSwitch
             this.currentProfile = null;
             this.refreshStatus();
          }
-
-        private void ProfiletextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Addresslabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Masklabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StatusNetworkLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StatusIPLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NICcomboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StatusGatewayLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
