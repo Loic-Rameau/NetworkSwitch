@@ -395,7 +395,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(594, 400);
             this.Name = "Form1";
-            this.Text = "NetworkSwitching";
+            this.Text = "Network Switching";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
